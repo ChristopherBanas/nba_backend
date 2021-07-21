@@ -1,5 +1,6 @@
 from nba_api.stats.endpoints import boxscoretraditionalv2, leaguegamefinder
 from datetime import datetime, timedelta
+import time
 
 def main():
     yesterday = str((datetime.now() - timedelta(1)).strftime('%m/%d/%Y'))
@@ -19,33 +20,29 @@ def main():
     boxScores = []
     for gameId in gameIds:
         getPlayerBoxScore(boxScores, gameId)
-    print(boxScores)
 
 def getPlayerBoxScore(boxScores, gameId):
     fullBox = boxscoretraditionalv2.BoxScoreTraditionalV2(game_id=gameId).get_dict()
-    playerHeaders = fullBox['resultSets'][0]['headers']
+    playerHeaders = ['GAME_ID', 'TEAM_ID', 'TEAM_ABBREVIATION', 'TEAM_CITY', 'PLAYER_ID', 'PLAYER_NAME', 'NICKNAME', 'START_POSITION', 'COMMENT', 'MIN', 'FGM', 'FGA', 'FG_PCT', 'FG3M', 'FG3A', 'FG3_PCT', 'FTM', 'FTA', 'FT_PCT', 'OREB', 'DREB', 'REB', 'AST', 'STL', 'BLK', 'TO', 'PF', 'PTS', 'PLUS_MINUS']
     playerStats = fullBox['resultSets'][0]['rowSet']
     playerBox = []
-    for header in range(0, len(playerHeaders)):
-        for player in range(0, len(playerStats)):
-            headerValue = playerHeaders[header]
-            playerValue = playerStats[player][header]
-            if header == 0:  # first time
-                playerBox.append({headerValue: playerValue})
-            else:
-                tempDict = playerBox[player]
-                tempDict[headerValue] = playerValue
-                playerBox[player] = tempDict  # update dictionary
-        if header == len(playerHeaders) - 1:  # end reached
-            awayBox = []
-            homeBox = []
-            awayId = playerBox[0]['TEAM_ID']
-            for box in playerBox:
-                if box['TEAM_ID'] == awayId:
-                    awayBox.append(box)
-                else:  # home team
-                    homeBox.append(box)
-            boxScores.append({gameId : {"PLAYER_BOX_SCORE": {"AWAY": awayBox, "HOME": homeBox}}})
+    for player in playerStats:
+        index = 0
+        tempDict = {}
+        while index < len(playerHeaders):
+            tempDict[playerHeaders[index]] = player[index]
+            index += 1
+        playerBox.append(tempDict)
+    awayBox = []
+    homeBox = []
+    awayId = playerBox[0]['TEAM_ID']
+    for box in playerBox:
+        if box['TEAM_ID'] == awayId:
+            awayBox.append(box)
+        else:  # home team
+            homeBox.append(box)
+    boxScores.append({gameId : {"PLAYER_BOX_SCORE": {"AWAY": awayBox, "HOME": homeBox}}})
+
 
 if __name__ == "__main__":
     main()
