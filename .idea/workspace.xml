@@ -15,7 +15,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4b20987c-f11b-4925-ad8e-0706ef2c980a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/nba_api" beforeDir="false" afterPath="$PROJECT_DIR$/packages/nba_api" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/nba_api/README.md" beforeDir="false" />
@@ -55,7 +55,7 @@
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.github.ui.GithubSettingsConfigurable" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Language Defaults" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RunManager">
@@ -108,7 +108,7 @@
       <updated>1626820525937</updated>
       <workItem from="1626820527110" duration="9078000" />
       <workItem from="1626829648575" duration="280000" />
-      <workItem from="1626909512217" duration="1009000" />
+      <workItem from="1626909512217" duration="6390000" />
     </task>
     <servers />
   </component>
@@ -140,34 +140,34 @@
       <screen x="0" y="25" width="1440" height="784" />
     </state>
     <state x="566" y="319" key="Github.ShareDialog/0.25.1440.784@0.25.1440.784" timestamp="1626829494428" />
-    <state width="1303" height="210" key="GridCell.Tab.0.bottom" timestamp="1626910521189">
+    <state width="1303" height="233" key="GridCell.Tab.0.bottom" timestamp="1626916519721">
       <screen x="0" y="25" width="1440" height="784" />
     </state>
     <state width="1398" height="479" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1626822436873" />
-    <state width="1303" height="210" key="GridCell.Tab.0.bottom/0.25.1440.784@0.25.1440.784" timestamp="1626910521189" />
-    <state width="1303" height="210" key="GridCell.Tab.0.center" timestamp="1626910521188">
+    <state width="1303" height="233" key="GridCell.Tab.0.bottom/0.25.1440.784@0.25.1440.784" timestamp="1626916519721" />
+    <state width="1303" height="233" key="GridCell.Tab.0.center" timestamp="1626916519720">
       <screen x="0" y="25" width="1440" height="784" />
     </state>
     <state width="1398" height="479" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1626822436872" />
-    <state width="1303" height="210" key="GridCell.Tab.0.center/0.25.1440.784@0.25.1440.784" timestamp="1626910521188" />
-    <state width="1303" height="210" key="GridCell.Tab.0.left" timestamp="1626910521188">
+    <state width="1303" height="233" key="GridCell.Tab.0.center/0.25.1440.784@0.25.1440.784" timestamp="1626916519720" />
+    <state width="1303" height="233" key="GridCell.Tab.0.left" timestamp="1626916519720">
       <screen x="0" y="25" width="1440" height="784" />
     </state>
     <state width="1398" height="479" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1626822436871" />
-    <state width="1303" height="210" key="GridCell.Tab.0.left/0.25.1440.784@0.25.1440.784" timestamp="1626910521188" />
-    <state width="1303" height="210" key="GridCell.Tab.0.right" timestamp="1626910521189">
+    <state width="1303" height="233" key="GridCell.Tab.0.left/0.25.1440.784@0.25.1440.784" timestamp="1626916519720" />
+    <state width="1303" height="233" key="GridCell.Tab.0.right" timestamp="1626916519721">
       <screen x="0" y="25" width="1440" height="784" />
     </state>
     <state width="1398" height="479" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1626822436873" />
-    <state width="1303" height="210" key="GridCell.Tab.0.right/0.25.1440.784@0.25.1440.784" timestamp="1626910521189" />
+    <state width="1303" height="233" key="GridCell.Tab.0.right/0.25.1440.784@0.25.1440.784" timestamp="1626916519721" />
     <state x="346" y="182" key="MultipleFileMergeDialog" timestamp="1626829798835">
       <screen x="0" y="25" width="1440" height="784" />
     </state>
     <state x="346" y="182" key="MultipleFileMergeDialog/0.25.1440.784@0.25.1440.784" timestamp="1626829798835" />
-    <state x="244" y="25" key="SettingsEditor" timestamp="1626820612260">
+    <state x="244" y="25" key="SettingsEditor" timestamp="1626914801987">
       <screen x="0" y="25" width="1440" height="784" />
     </state>
-    <state x="244" y="25" key="SettingsEditor/0.25.1440.784@0.25.1440.784" timestamp="1626820612260" />
+    <state x="244" y="25" key="SettingsEditor/0.25.1440.784@0.25.1440.784" timestamp="1626914801987" />
     <state width="672" height="392" key="XDebugger.FullValuePopup" timestamp="1626823671225">
       <screen x="0" y="25" width="1440" height="784" />
     </state>
@@ -179,6 +179,13 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/test.py</url>
+          <line>35</line>
+          <option name="timeStamp" value="38" />
+        </line-breakpoint>
+      </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
           <properties notifyOnTerminate="true" exception="BaseException">
@@ -193,6 +200,6 @@
     <select />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/nba_backend$test.coverage" NAME="test Coverage Results" MODIFIED="1626910521140" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/nba_backend$test.coverage" NAME="test Coverage Results" MODIFIED="1626916519692" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
