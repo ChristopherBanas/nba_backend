@@ -1,14 +1,13 @@
 from nba_api.stats.endpoints import boxscoretraditionalv2, leaguegamefinder
 from datetime import datetime, timedelta
-import time
 
 def main():
     yesterday = str((datetime.now() - timedelta(1)).strftime('%m/%d/%Y'))
-    date = "1/26/2021"
+    date = "7/17/2021"
     rawGames = leaguegamefinder.LeagueGameFinder(
         date_from_nullable=date,
         date_to_nullable=date,
-        season_type_nullable="Regular Season",
+        season_type_nullable="Playoffs",
         league_id_nullable='00'  # nba league id is 00
     ).get_dict()
 
@@ -38,9 +37,9 @@ def main():
         getTopPerformances(boxScores[gameId])
     for gameId in boxScores:
         print("------------------------------------------------------------------------")
-        print(f"GAME: {boxScores[gameId]['TEAM_BOX_SCORE']['AWAY'][0]['TEAM_NAME']} (AWAY) VS {boxScores[gameId]['TEAM_BOX_SCORE']['HOME'][0]['TEAM_NAME']} (HOME)")
-        print(f"     DATE: {boxScores[gameId]['TEAM_BOX_SCORE']['AWAY'][0]['GAME_DATE']}")
-        print(f"     OUTCOME: {boxScores[gameId]['TEAM_BOX_SCORE']['AWAY'][0]['TEAM_NAME']} - {boxScores[gameId]['TEAM_BOX_SCORE']['AWAY'][0]['WL']} ({boxScores[gameId]['TEAM_BOX_SCORE']['AWAY'][0]['PTS']}) || {boxScores[gameId]['TEAM_BOX_SCORE']['HOME'][0]['TEAM_NAME']} - {boxScores[gameId]['TEAM_BOX_SCORE']['HOME'][0]['WL']} ({boxScores[gameId]['TEAM_BOX_SCORE']['AWAY'][0]['PTS']})")
+        print(f"GAME: {boxScores[gameId]['TEAM_BOX_SCORE']['AWAY']['TEAM_NAME']} (AWAY) VS {boxScores[gameId]['TEAM_BOX_SCORE']['HOME']['TEAM_NAME']} (HOME)")
+        print(f"     DATE: {boxScores[gameId]['TEAM_BOX_SCORE']['AWAY']['GAME_DATE']}")
+        print(f"     OUTCOME: {boxScores[gameId]['TEAM_BOX_SCORE']['AWAY']['TEAM_NAME']} - {boxScores[gameId]['TEAM_BOX_SCORE']['AWAY']['WL']} ({boxScores[gameId]['TEAM_BOX_SCORE']['AWAY']['PTS']}) || {boxScores[gameId]['TEAM_BOX_SCORE']['HOME']['TEAM_NAME']} - {boxScores[gameId]['TEAM_BOX_SCORE']['HOME']['WL']} ({boxScores[gameId]['TEAM_BOX_SCORE']['HOME']['PTS']})")
         print("     TOP PERFORMERS:")
         print("         PTS:")
         for player in boxScores[gameId]['TOP_PERFORMERS']['HOME']['TOP_POINTS']:
@@ -63,41 +62,38 @@ def main():
 
 
 def getTeamBoxScore(boxScore, gameId, gameDict):
-    headers = ['SEASON_ID', 'TEAM_ID', 'TEAM_ABBREVIATION', 'TEAM_NAME', 'GAME_ID', 'GAME_DATE', 'MATCHUP', 'WL', 'MIN', 'PTS', 'FGM', 'FGA', 'FG_PCT', 'FG3M', 'FG3A', 'FG3_PCT', 'FTM', 'FTA', 'FT_PCT', 'OREB', 'DREB', 'REB', 'AST', 'STL', 'BLK', 'TOV', 'PF', 'PLUS_MINUS']
-    homeBox = homeAwayTeamBoxScore(gameDict['HOME'], headers)
-    awayBox = homeAwayTeamBoxScore(gameDict['AWAY'], headers)
+    homeBox = homeAwayTeamBoxScore(gameDict['HOME'])
+    awayBox = homeAwayTeamBoxScore(gameDict['AWAY'])
     boxScore[gameId] = {"TEAM_BOX_SCORE": {"AWAY": awayBox, "HOME": homeBox}}
 
-def homeAwayTeamBoxScore(teamBox, headers):
-    returnBox = []
+def homeAwayTeamBoxScore(teamBox):
+    # hard coded, no need to pass in entirety of rawGames dictionary to get them
+    headers = ['SEASON_ID', 'TEAM_ID', 'TEAM_ABBREVIATION', 'TEAM_NAME', 'GAME_ID', 'GAME_DATE', 'MATCHUP', 'WL', 'MIN', 'PTS', 'FGM', 'FGA', 'FG_PCT', 'FG3M', 'FG3A', 'FG3_PCT', 'FTM', 'FTA', 'FT_PCT', 'OREB', 'DREB', 'REB', 'AST', 'STL', 'BLK', 'TOV', 'PF', 'PLUS_MINUS']
     tempDict = {}
     index = 0
     for header in headers:
         tempDict[header] = teamBox[index]
         index += 1
-    returnBox.append(tempDict)
-    return returnBox
+    return tempDict
 
 def getPlayerBoxScore(boxScores, gameId):
     fullBox = boxscoretraditionalv2.BoxScoreTraditionalV2(game_id=gameId).get_dict()
-    playerHeaders = ['GAME_ID', 'TEAM_ID', 'TEAM_ABBREVIATION', 'TEAM_CITY', 'PLAYER_ID', 'PLAYER_NAME', 'NICKNAME', 'START_POSITION', 'COMMENT', 'MIN', 'FGM', 'FGA', 'FG_PCT', 'FG3M', 'FG3A', 'FG3_PCT', 'FTM', 'FTA', 'FT_PCT', 'OREB', 'DREB', 'REB', 'AST', 'STL', 'BLK', 'TO', 'PF', 'PTS', 'PLUS_MINUS']
+    playerHeaders = fullBox['resultSets'][0]['headers']
     playerStats = fullBox['resultSets'][0]['rowSet']
-    playerBox = []
+    awayBox = []
+    homeBox = []
+    awayId = boxScores[gameId]['TEAM_BOX_SCORE']['AWAY']['TEAM_ID']
+    TEAM_ID_INDEX = 1
     for player in playerStats:
         index = 0
         tempDict = {}
         while index < len(playerHeaders):  # loop through all of the stats from a player
             tempDict[playerHeaders[index]] = player[index]
             index += 1
-        playerBox.append(tempDict)
-    awayBox = []
-    homeBox = []
-    awayId = playerBox[0]['TEAM_ID']  # first person will always be away
-    for box in playerBox:  # loop through to organize into away / home dictionaries
-        if box['TEAM_ID'] == awayId:
-            awayBox.append(box)
-        else:  # home team
-            homeBox.append(box)
+        if player[TEAM_ID_INDEX] == awayId:
+            awayBox.append(tempDict)
+        else:  # home
+            homeBox.append(tempDict)
     boxScores[gameId].update({"PLAYER_BOX_SCORE": {"AWAY": awayBox, "HOME": homeBox}})
 
 def getTopPerformances(boxScore):

@@ -18,7 +18,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/nba_api" beforeDir="false" afterPath="$PROJECT_DIR$/packages/nba_api" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/nba_api/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/games.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,8 +57,19 @@
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Language Defaults" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
-  <component name="RunManager">
-    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python.standings">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="games" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="nba_backend" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -71,7 +82,29 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/games.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="standings" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="nba_backend" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/standings.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -82,7 +115,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.test" />
+        <item itemvalue="Python.standings" />
+        <item itemvalue="Python.games" />
       </list>
     </recent_temporary>
   </component>
@@ -99,7 +133,9 @@
       <workItem from="1626909512217" duration="6576000" />
       <workItem from="1626996031413" duration="735000" />
       <workItem from="1626996783036" duration="1058000" />
-      <workItem from="1626997884172" duration="3874000" />
+      <workItem from="1626997884172" duration="5045000" />
+      <workItem from="1627003271335" duration="383000" />
+      <workItem from="1627066689984" duration="3187000" />
     </task>
     <servers />
   </component>
@@ -141,26 +177,26 @@
       <screen x="0" y="25" width="1440" height="784" />
     </state>
     <state x="566" y="319" key="Github.ShareDialog/0.25.1440.784@0.25.1440.784" timestamp="1626829494428" />
-    <state width="1398" height="525" key="GridCell.Tab.0.bottom" timestamp="1627001731188">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state width="1153" height="287" key="GridCell.Tab.0.bottom" timestamp="1627069946136">
+      <screen x="0" y="25" width="1440" height="784" />
     </state>
-    <state width="1398" height="525" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1627001731188" />
-    <state width="1267" height="119" key="GridCell.Tab.0.bottom/0.25.1440.784@0.25.1440.784" timestamp="1627001017477" />
-    <state width="1398" height="525" key="GridCell.Tab.0.center" timestamp="1627001731187">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state width="1398" height="371" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1627003046948" />
+    <state width="1153" height="287" key="GridCell.Tab.0.bottom/0.25.1440.784@0.25.1440.784" timestamp="1627069946136" />
+    <state width="1153" height="287" key="GridCell.Tab.0.center" timestamp="1627069946135">
+      <screen x="0" y="25" width="1440" height="784" />
     </state>
-    <state width="1398" height="525" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1627001731187" />
-    <state width="1267" height="119" key="GridCell.Tab.0.center/0.25.1440.784@0.25.1440.784" timestamp="1627001017476" />
-    <state width="1398" height="525" key="GridCell.Tab.0.left" timestamp="1627001731186">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state width="1398" height="371" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1627003046947" />
+    <state width="1153" height="287" key="GridCell.Tab.0.center/0.25.1440.784@0.25.1440.784" timestamp="1627069946135" />
+    <state width="1153" height="287" key="GridCell.Tab.0.left" timestamp="1627069946134">
+      <screen x="0" y="25" width="1440" height="784" />
     </state>
-    <state width="1398" height="525" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1627001731186" />
-    <state width="1267" height="119" key="GridCell.Tab.0.left/0.25.1440.784@0.25.1440.784" timestamp="1627001017476" />
-    <state width="1398" height="525" key="GridCell.Tab.0.right" timestamp="1627001731188">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state width="1398" height="371" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1627003046946" />
+    <state width="1153" height="287" key="GridCell.Tab.0.left/0.25.1440.784@0.25.1440.784" timestamp="1627069946134" />
+    <state width="1153" height="287" key="GridCell.Tab.0.right" timestamp="1627069946135">
+      <screen x="0" y="25" width="1440" height="784" />
     </state>
-    <state width="1398" height="525" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1627001731188" />
-    <state width="1267" height="119" key="GridCell.Tab.0.right/0.25.1440.784@0.25.1440.784" timestamp="1627001017476" />
+    <state width="1398" height="371" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1627003046947" />
+    <state width="1153" height="287" key="GridCell.Tab.0.right/0.25.1440.784@0.25.1440.784" timestamp="1627069946135" />
     <state x="346" y="182" key="MultipleFileMergeDialog" timestamp="1626829798835">
       <screen x="0" y="25" width="1440" height="784" />
     </state>
@@ -180,13 +216,6 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/test.py</url>
-          <line>39</line>
-          <option name="timeStamp" value="23" />
-        </line-breakpoint>
-      </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
           <properties notifyOnTerminate="true" exception="BaseException">
@@ -201,6 +230,7 @@
     <select />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/nba_backend$test.coverage" NAME="test Coverage Results" MODIFIED="1627001731180" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/nba_backend$test.coverage" NAME="test Coverage Results" MODIFIED="1627066974598" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/nba_backend$standings.coverage" NAME="standings Coverage Results" MODIFIED="1627069668186" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
