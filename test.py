@@ -4,11 +4,16 @@ import time
 
 def main():
     yesterday = str((datetime.now() - timedelta(1)).strftime('%m/%d/%Y'))
+    header = {
+        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.1 Safari/605.1.15",
+        "x-nba-stats-origin": "stats"
+    }
     date = "7/20/2021"
     rawGames = leaguegamefinder.LeagueGameFinder(
         date_from_nullable=date,
         date_to_nullable=date,
-        season_type_nullable="Playoffs"
+        season_type_nullable="Playoffs",
+        league_id_nullable='00'
     ).get_dict()
 
     GAME_ID_INDEX = 4
@@ -33,7 +38,15 @@ def main():
         getTeamBoxScore(boxScores, gameId, games[gameId])
     for gameId in gameIds:
         getPlayerBoxScore(boxScores, gameId)
-    print("e")
+    topPerformers = getTopPerformances(boxScores['0042000406']['PLAYER_BOX_SCORE']['HOME'])
+    for player in topPerformers['TOP_POINTS']:
+        print(f"PTS: Player {player['PLAYER_NAME']} : {player['PTS']}")
+    print("")
+    for player in topPerformers['TOP_ASSISTS']:
+        print(f"AST: Player {player['PLAYER_NAME']} : {player['AST']}")
+    print("")
+    for player in topPerformers['TOP_REBOUNDS']:
+        print(f"REB: Player {player['PLAYER_NAME']} : {player['REB']}")
 
 def getTeamBoxScore(boxScores, gameId, gameDict):
     headers = ['SEASON_ID', 'TEAM_ID', 'TEAM_ABBREVIATION', 'TEAM_NAME', 'GAME_ID', 'GAME_DATE', 'MATCHUP', 'WL', 'MIN', 'PTS', 'FGM', 'FGA', 'FG_PCT', 'FG3M', 'FG3A', 'FG3_PCT', 'FTM', 'FTA', 'FT_PCT', 'OREB', 'DREB', 'REB', 'AST', 'STL', 'BLK', 'TOV', 'PF', 'PLUS_MINUS']
@@ -73,7 +86,30 @@ def getPlayerBoxScore(boxScores, gameId):
             homeBox.append(box)
     boxScores[gameId].update({"PLAYER_BOX_SCORE": {"AWAY": awayBox, "HOME": homeBox}})
 
+def getTopPerformances(boxScore):
+    tempBox = boxScore
+    topPoints = sorted(tempBox, key=getPoints, reverse=True)[0:3]
+    topAssists = sorted(tempBox, key=getAssists, reverse=True)[0:3]
+    topRebounds = sorted(tempBox, key=getRebounds, reverse=True)[0:3]
+    return {"TOP_POINTS": topPoints, "TOP_ASSISTS": topAssists, "TOP_REBOUNDS": topRebounds}
 
+def getPoints(elem):
+    val = elem['PTS']
+    if val is None:
+        return 0
+    return val
+
+def getAssists(elem):
+    val = elem['AST']
+    if val is None:
+        return 0
+    return val
+
+def getRebounds(elem):
+    val = elem['REB']
+    if val is None:
+        return 0
+    return val
 
 if __name__ == "__main__":
     main()
