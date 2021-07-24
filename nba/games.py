@@ -1,13 +1,15 @@
 from nba_api.stats.endpoints import boxscoretraditionalv2, leaguegamefinder
-from datetime import datetime, timedelta
 
-def main():
-    yesterday = str((datetime.now() - timedelta(1)).strftime('%m/%d/%Y'))
-    date = "7/17/2021"
+def getGames(month, day, year):
+    date = f"{month}/{day}/{year}"
+    seasonType = "Regular Season"
+    playoffMonths = {5, 6, 7}
+    if int(month) in playoffMonths:
+        seasonType = "Playoffs"
     rawGames = leaguegamefinder.LeagueGameFinder(
         date_from_nullable=date,
         date_to_nullable=date,
-        season_type_nullable="Playoffs",
+        season_type_nullable=seasonType,
         league_id_nullable='00'  # nba league id is 00
     ).get_dict()
 
@@ -35,30 +37,7 @@ def main():
         getPlayerBoxScore(boxScores, gameId)
     for gameId in boxScores:  # get top performers for each team
         getTopPerformances(boxScores[gameId])
-    for gameId in boxScores:
-        print("------------------------------------------------------------------------")
-        print(f"GAME: {boxScores[gameId]['TEAM_BOX_SCORE']['AWAY']['TEAM_NAME']} (AWAY) VS {boxScores[gameId]['TEAM_BOX_SCORE']['HOME']['TEAM_NAME']} (HOME)")
-        print(f"     DATE: {boxScores[gameId]['TEAM_BOX_SCORE']['AWAY']['GAME_DATE']}")
-        print(f"     OUTCOME: {boxScores[gameId]['TEAM_BOX_SCORE']['AWAY']['TEAM_NAME']} - {boxScores[gameId]['TEAM_BOX_SCORE']['AWAY']['WL']} ({boxScores[gameId]['TEAM_BOX_SCORE']['AWAY']['PTS']}) || {boxScores[gameId]['TEAM_BOX_SCORE']['HOME']['TEAM_NAME']} - {boxScores[gameId]['TEAM_BOX_SCORE']['HOME']['WL']} ({boxScores[gameId]['TEAM_BOX_SCORE']['HOME']['PTS']})")
-        print("     TOP PERFORMERS:")
-        print("         PTS:")
-        for player in boxScores[gameId]['TOP_PERFORMERS']['HOME']['TOP_POINTS']:
-            print(f"            HOME || {player['PLAYER_NAME']} - {player['PTS']}")
-        print("             ---------------------------")
-        for player in boxScores[gameId]['TOP_PERFORMERS']['AWAY']['TOP_POINTS']:
-            print(f"            AWAY || {player['PLAYER_NAME']} - {player['PTS']}")
-        print("         REBOUNDS:")
-        for player in boxScores[gameId]['TOP_PERFORMERS']['HOME']['TOP_REBOUNDS']:
-            print(f"            HOME || {player['PLAYER_NAME']} - {player['REB']}")
-        print("             ---------------------------")
-        for player in boxScores[gameId]['TOP_PERFORMERS']['AWAY']['TOP_REBOUNDS']:
-            print(f"            AWAY || {player['PLAYER_NAME']} - {player['REB']}")
-        print("         ASSISTS:")
-        for player in boxScores[gameId]['TOP_PERFORMERS']['HOME']['TOP_ASSISTS']:
-            print(f"            HOME || {player['PLAYER_NAME']} - {player['AST']}")
-        print("             ---------------------------")
-        for player in boxScores[gameId]['TOP_PERFORMERS']['AWAY']['TOP_ASSISTS']:
-            print(f"            AWAY || {player['PLAYER_NAME']} - {player['AST']}")
+    return boxScores
 
 
 def getTeamBoxScore(boxScore, gameId, gameDict):
@@ -122,5 +101,3 @@ def checkVal(val):
         return 0
     return val
 
-if __name__ == "__main__":
-    main()

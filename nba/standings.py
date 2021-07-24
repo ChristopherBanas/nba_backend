@@ -1,13 +1,14 @@
 from nba_api.stats.endpoints import leaguestandingsv3
 
-def main():
+def getStandings():
     rawStandings = leaguestandingsv3.LeagueStandingsV3(
         league_id='00',
     ).get_dict()
     standings = {}
-    getStandings(standings, rawStandings)
+    getEastWestStandings(standings, rawStandings)
+    return standings
 
-def getStandings(standings, rawStandings):
+def getEastWestStandings(standings, rawStandings):
     headers = rawStandings['resultSets'][0]['headers']
     teamStats = rawStandings['resultSets'][0]['rowSet']
     westStandings = []
@@ -23,16 +24,13 @@ def getStandings(standings, rawStandings):
             westStandings.append(tempDict)
         else:  # east
             eastStandings.append(tempDict)
-    leagueStandings = getLeagueStandings(eastStandings, westStandings)
+    leagueStandings = getTotalStandings(eastStandings, westStandings)
     standings.update({'EAST': eastStandings, 'WEST': westStandings, 'LEAGUE': leagueStandings})
 
-def getLeagueStandings(eastStandings, westStandings):
+def getTotalStandings(eastStandings, westStandings):
     leagueStandings = eastStandings + westStandings
     leagueStandings = sorted(leagueStandings, key=winPercentage, reverse=True)
     return leagueStandings
 
 def winPercentage(elem):
     return elem['WinPCT']
-
-if __name__ == '__main__':
-    main()
