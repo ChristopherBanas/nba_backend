@@ -1,3 +1,5 @@
 packages/nba_api
 pandas
 requests
+flask
+flask-restful
