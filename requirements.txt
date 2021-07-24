@@ -1,4 +1,4 @@
-packages/nba_api
+nba-api
 pandas
 requests
 flask
