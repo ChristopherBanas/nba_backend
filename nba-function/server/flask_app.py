@@ -1,7 +1,7 @@
 from flask import Flask
 from flask_restful import Api
 
-from app.routes import GetGames, GetStandings, Index
+from .routes import *
 
 app = Flask(__name__)
 api = Api(app)
