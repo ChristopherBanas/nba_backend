@@ -1,4 +1,4 @@
-from cosmos.cosmosClient import standingsContainer, gamesContainer
+from cosmos.client import standingsContainer, gamesContainer
 from cosmos.delete import deleteStandings
 
 def uploadStandings(json):
