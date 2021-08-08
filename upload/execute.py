@@ -5,8 +5,8 @@ from cosmos.upload import uploadStandings, uploadGames
 
 def main():
     today = datetime.today()
-    yesterday = today - timedelta(1)
-    games(today, yesterday)
+    #yesterday = today - timedelta(1)
+    #games(today, yesterday)
     standings(today)
 
 
