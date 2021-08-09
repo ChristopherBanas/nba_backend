@@ -1,0 +1,6 @@
+.git*
+.idea
+.python_packages
+local.settings.json
+test
+.venv

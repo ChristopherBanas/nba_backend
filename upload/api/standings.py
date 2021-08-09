@@ -1,10 +1,36 @@
 from nba_api.stats.endpoints import leaguestandingsv3
 
 nameDict = {
-    'Cavaliers': 'Cavs',
-    'Mavericks': 'Mavs',
-    'Trail Blazers': 'Blazers',
-    'Timberwolves': 'TWolves',
+    '76ers': 'PHI',
+    'Nets': 'BKN',
+    'Bucks': 'MIL',
+    'Knicks': 'NY',
+    'Hawks': 'ATL',
+    'Heat': 'MIA',
+    'Celtics': 'BOS',
+    'Wizards': 'WSH',
+    'Pacers': 'IND',
+    'Hornets': 'CHA',
+    'Bulls': 'CHI',
+    'Raptors': 'TOR',
+    'Cavaliers': 'CLE',
+    'Magic': 'ORL',
+    'Pistons': 'DET',
+    'Jazz': 'UTA',
+    'Suns': 'PHX',
+    'Nuggets': 'DEN',
+    'Clippers': 'LAC',
+    'Mavericks': 'DAL',
+    'Trail Blazers': 'POR',
+    'Lakers': 'LAL',
+    'Grizzlies': 'MEM',
+    'Warriors': 'GSW',
+    'Spurs': 'SAS',
+    'Pelicans': 'NOP',
+    'Kings': 'SAC',
+    'Timberwolves': 'MIN',
+    'Thunder': 'OKC',
+    'Rockets': 'HOU'
 }
 
 def getStandings():
@@ -27,7 +53,7 @@ def getEastWestStandings(standings, rawStandings):
         while index < len(headers):
             value = team[index]
             if headers[index] == 'TeamName':
-                value = shortenName(value)
+                value = nameDict[value]
             tempDict[headers[index]] = value
             index += 1
         if team[CONFERENCE_INDEX] == 'West':
@@ -45,7 +71,3 @@ def getTotalStandings(eastStandings, westStandings):
 def winPercentage(elem):
     return elem['WinPCT']
 
-def shortenName(value):
-    if value in nameDict:  # shorter name available
-        return nameDict[value]
-    return value

@@ -5,4 +5,5 @@ pandas
 requests
 flask
 flask-restful
+flask_cors
 azure-cosmos
