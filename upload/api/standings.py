@@ -54,7 +54,7 @@ def getEastWestStandings(standings, rawStandings):
             value = team[index]
             if headers[index] == 'TeamName':
                 value = nameDict[value]
-            tempDict[headers[index]] = value
+            tempDict[headers[index]] = value if type(value) != str else value.strip()
             index += 1
         if team[CONFERENCE_INDEX] == 'West':
             westStandings.append(tempDict)

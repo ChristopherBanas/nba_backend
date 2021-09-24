@@ -2,16 +2,18 @@ from upload.api.games import getGames
 from upload.api.standings import getStandings
 from datetime import datetime, timedelta
 from cosmos.upload import uploadStandings, uploadGames
+from cosmos.delete import deleteGames
 
 def main():
     today = datetime.today()
-    #yesterday = today - timedelta(1)
-    #games(today, yesterday)
-    standings(today)
+    yesterday = today - timedelta(1)
+    games(today, yesterday)
+    #standings(today)
 
 
 def games(today, yesterday):
-    gameDict = getGames('12', '22', '2020')
+    gameDict = getGames('12', '25', '2020')
+    deleteGames()
     for game in gameDict:
         gameJson = {"GAME_ID": game}
         gameJson.update(gameDict[game])

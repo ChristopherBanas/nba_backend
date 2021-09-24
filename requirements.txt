@@ -6,4 +6,5 @@ requests
 flask
 flask-restful
 flask_cors
+nba-api
 azure-cosmos
