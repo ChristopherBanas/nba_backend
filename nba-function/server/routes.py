@@ -6,8 +6,8 @@ class Index(Resource):
         return "Welcome!"
 
 class GetGames(Resource):
-    def get(self, month, day, year):
-        return downloadGames(month, day, year)
+    def get(self):
+        return downloadGames()
 
 class GetStandings(Resource):
     def get(self):

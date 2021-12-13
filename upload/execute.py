@@ -7,17 +7,17 @@ from cosmos.delete import deleteGames
 def main():
     today = datetime.today()
     yesterday = today - timedelta(1)
-    games(today, yesterday)
-    #standings(today)
+    games(yesterday)
+    standings(today)
 
-
-def games(today, yesterday):
-    gameDict = getGames('12', '25', '2020')
+def games(yesterday):
+    #gameDict = getGames('5', '16', '2021')
+    gameDict = getGames(yesterday.month, yesterday.day, yesterday.year)
     deleteGames()
     for game in gameDict:
         gameJson = {"GAME_ID": game}
         gameJson.update(gameDict[game])
-        gameJson.update({'DATE' : today.strftime("%m/%d/%Y")})
+        gameJson.update({'DATE' : yesterday.strftime("%m/%d/%Y")})
         gameJson.update({"games" : "games"})
         uploadGames(gameJson)
 

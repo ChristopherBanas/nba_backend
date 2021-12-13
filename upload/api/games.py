@@ -1,9 +1,10 @@
 from nba_api.stats.endpoints import boxscoretraditionalv2, leaguegamefinder
 import time
+
 def getGames(month, day, year):
     date = f"{month}/{day}/{year}"
     seasonType = "Regular Season"
-    playoffMonths = {5, 6, 7}
+    playoffMonths = {9, 6, 7}
     if int(month) in playoffMonths:
         seasonType = "Playoffs"
     rawGames = leaguegamefinder.LeagueGameFinder(
@@ -72,6 +73,7 @@ def getQuarterData(boxScores, gameId):
     nameList = ['FIRST_HALF', "SECOND_HALF", 'Q1', 'Q2', 'Q3', 'Q4']
     awayId = boxScores[gameId]['TEAM_BOX_SCORE']['AWAY']['TOTAL']['TEAM_ID']
     for i in range(0, len(ranges)):
+        print(f"Getting {nameList[i]} stats for {gameId}")
         time.sleep(5)
         start = ranges[i][0]
         end = ranges[i][1]

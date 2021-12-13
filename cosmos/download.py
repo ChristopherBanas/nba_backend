@@ -5,7 +5,7 @@ def downloadStandings():
                                                 query="SELECT * FROM Items"))
     return items
 
-def downloadGames(month, day, year):
+def downloadGames():
     items = list(gamesContainer.query_items(enable_cross_partition_query=True,
                                                 query="SELECT * FROM Items"))
     return items
